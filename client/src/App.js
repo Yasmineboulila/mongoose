@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Routes,Route } from "react-router-dom"
 
+import './App.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { get_post } from "./redux/action/action";
 function App() {
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(get_post())
+  },[dispatch])
+  const post=useSelector((state)=>state.post)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {console.log(post)} 
+     
+       
     </div>
   );
 }
