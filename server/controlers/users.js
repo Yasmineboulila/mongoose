@@ -48,6 +48,15 @@ try {
             
         }
         
-    })
+    }),
+    getOneUser:async(req,res,id)=>{
+        try {
+            const user=await users.findById(id)
+            res.status(200).send({msg:"user",user:user})
+        } catch (error) {
+            // res.status(500).send(error)
+            
+        }
+    }
 
 }
